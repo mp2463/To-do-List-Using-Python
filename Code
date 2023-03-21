@@ -1,0 +1,61 @@
+
+tasks = []
+
+
+def add_task():
+    task = input("Enter a new task: ")
+    tasks.append(task)
+    print("Task added.")
+
+
+def show_tasks():
+    if len(tasks) == 0:
+        print("No tasks found.")
+    else:
+        print("Tasks:")
+        for i, task in enumerate(tasks):
+            print(f"{i+1}. {task}")
+
+
+def remove_task():
+    show_tasks()
+    task_index = int(input("Enter the number of the task to remove: ")) - 1
+    if task_index < 0 or task_index >= len(tasks):
+        print("Invalid task number.")
+    else:
+        tasks.pop(task_index)
+        print("Task removed.")
+
+
+def clear_tasks():
+    tasks.clear()
+    print("All tasks cleared.")
+
+
+def menu():
+    while True:
+        print("""
+Menu:
+1. Add a task
+2. Show tasks
+3. Remove a task
+4. Clear all tasks
+5. Exit
+""")
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            show_tasks()
+        elif choice == "3":
+            remove_task()
+        elif choice == "4":
+            clear_tasks()
+        elif choice == "5":
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice.")
+
+
+menu()
